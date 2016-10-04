@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--ng-app directive goes in html tag-->
+<html lang="en" ng-app="angApp">
+<!--Fix if wierd characters are displaying on page-->
+<meta charset="utf-8">
+
+<head>
+    <title>San Diego Top Spots in AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js">
+    </script>
+    <meta name="keywords" content="ng-map,AngularJS,center">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<!--ng-controller directive goes in body tag-->
+<body ng-controller="AngController">
+    <div class="container">
+        <div class="form-group">
+            <h1>San Diego Top Spots in AngularJS</h1>
+            <legend></legend>
+        </div>
+        <div>
+            <p>There are some great places to see in downtown San Diego. In this project you'll get to know a few of them by turning the provided JSON file into a table in HTML with links to Google Maps using Angular.</p>
+        </div>
+        <div class="form-group">
+            <table class="table table-striped" id="mytopspot">
+                <tr class="text-left">
+                    <div class="col-md-2 col-md-offset-2">
+                        <th>Name</th>
+                    </div>
+                    <div class="col-md-6">
+                        <th>Description</th>
+                    </div>
+                    <div class="col-md-2">
+                        <th>Link</th>
+                    </div>
+                </tr>
+                <!--ng-repeat directive to generate the rows of Top Spots data name and desciption-->
+                <tr class="text-left" ng-repeat="data in places">
+                    <td>{{data.name}}</td>
+                    <td>{{data.description}}</td>
+                    <td>
+                        <!--Array info from location in .json file ex:"location": [33.09745, -116.99572]-->
+                        <a href="http://maps.google.com?q={{data.location[0]}},{{data.location[1]}}">
+                            <button type='button' class='btn btn-danger'>Danger Will Robinson</button>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <legend></legend>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
